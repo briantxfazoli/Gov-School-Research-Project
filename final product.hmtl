@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html>
+<style>
+	#welcome{text-align:center}
+<body>
+	<h1 id='welcome'>Welcome<h1>
