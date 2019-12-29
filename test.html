@@ -2,20 +2,66 @@
 <html>
 
 <style>
-	heading {text-align: center}
-	body {background-color: "id='backgroundcolor'";}
+	
+	body {text-align: center}
+	.button {
+		color: #8600E2;
+		padding: 15px 32px;
+		font-size: 20px
+	}
+
 </style>
 
-<script>
-	var bone = 'salmon';
-	document.getElementById('backgroundcolor').innerHTML = bone;
-</script>
-
 <heading>
-	<h1 style='font-size: 409%;'>Welcome To The Focus Test!</h1>
-	<h2>This test is part of a research project being conducted by a 
-	<br>
-	student of The Governor's School for Science and Technology.</h2>
+	
+	<div id='body1'>
+		<h1 style='font-size: 80px';>Welcome To The Focus Test!</h1>
+		<h2>This test is part of a research project being conducted by a 
+		<br>
+		student of The Governor's School for Science and Technology.</h2>
+		<button class='button' onclick='proceed()'><b>Proceed</b></button>
+		<br>
+		<br>
+		<button onclick='ugly()'>Why is this color scheme so ugly?</button>
+	</div>
+	<div id='body2' style='display: none';>
+		<h1 style='font-size: 50px';>Instructions</h1>
+		<p>A fake word will appear at the top of your screen, & your job will be to keep track of how many times it appears in the following series of fake words.<br>
+		After it is finished, type the amount of times you saw the word into the text box that will appear. Then, click the "Proceed" button. Good luck!<br>
+		if you happen to notice any bugs, please email me at brian.tafazoli@nhrec.org.</p>
+	</div>
+
 </heading>
 
+<script>
+
+	function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	var bcolor = ['White', 'Black', 'Gray', 'Aqua', 'Blue', 'Lime', 'Green', 'Purple', 'Red'];
+
+	function ugly() {
+		alert("The backround color & text color are chosen by random variables, which has to do with the way the test works. Reloading the page will change the color scheme, but during the test, you might get the same one you have right now. No matter how absurd the combination is, it deserves to be tested on.")
+	}
+	
+
+	var b = getRandomInt(0, 10);
+	var t = getRandomInt(0, 10);
+	if(b == t){
+		b+=1
+	}
+	document.body.style['background-color'] = bcolor[b];
+	document.body.style['color'] = bcolor[t];
+	
+	var bodyremove1 = document.getElementById('body1')
+	var bodyadd1 = document.getElementById('body2')
+	window.proceed = function(){
+		bodyremove1.style['display'] = 'none'
+		bodyadd1.style['display'] = 'block'
+	}
+
+</script>
 </html>
