@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <style>
@@ -24,12 +25,25 @@
 		<br>
 		<button onclick='ugly()'>Why is this color scheme so ugly?</button>
 	</div>
+
 	<div id='body2' style='display: none';>
 		<h1 style='font-size: 50px';>Instructions</h1>
 		<p>A fake word will appear at the top of your screen, & your job will be to keep track of how many times it appears in the following series of fake words.<br>
 		After it is finished, type the amount of times you saw the word into the text box that will appear. Then, click the "Proceed" button. Good luck!<br>
-		if you happen to notice any bugs, please email me at brian.tafazoli@nhrec.org.</p>
+		<br>
+		If you happen to notice any bugs, please email me at brian.tafazoli@nhrec.org.</p>
+		<button class='button' onclick='proceed2()'><b>Proceed</b></button>
 	</div>
+
+	<div id='dummy_round_ins' style='display: none';>
+		<h4>(This is just an example of what the tests will look like.)</h4>
+		<h1>Your word:</h1>
+		<h1 id='dummy_round_word' style='font-size: 60px';></h1>
+		<button class='button' onclick='begintest()'>Begin Test</button>
+	</div>
+
+	<div id='flashing words'>
+
 
 </heading>
 
@@ -63,5 +77,18 @@
 		bodyadd1.style['display'] = 'block'
 	}
 
+	var longlistowords = ['volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'tempor', 'blandit', 'congue', 'volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'tempor', 'blandit', 'congue', 'volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'tempor', 'blandit', 'congue', 'volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'labore', 'tempor', 'blandit', 'congue', 'volutpat' , 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'blandit', 'egestas', 'quisque', 'turpis', 'dictum' , 'blandit',  'egestas', 'turpis', 'dictum', 'volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'tempor', 'blandit', 'congue']
+
+	var testword = longlistowords[(getRandomInt(0,longlistowords.length))]
+
+	var bodyremove2 = document.getElementById('body2')
+	var bodyadd2 = document.getElementById('dummy_round_ins')
+	window.proceed2 = function(){
+		bodyremove2.style['display'] = 'none'
+		bodyadd2.style['display'] = 'block'
+		document.getElementById('dummy_round_word').innerHTML = testword;
+	}
+
 </script>
+
 </html>
