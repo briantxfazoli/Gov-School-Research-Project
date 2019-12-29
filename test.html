@@ -39,11 +39,7 @@
 		<h4>(This is just an example of what the tests will look like.)</h4>
 		<h1>Your word:</h1>
 		<h1 id='dummy_round_word' style='font-size: 60px';></h1>
-		<button class='button' onclick='begintest()'>Begin Test</button>
-	</div>
-
-	<div id='flashing words'>
-
+		<button class='button' onclick='begintest()'>Begin Test</button></div>
 
 </heading>
 
@@ -62,8 +58,8 @@
 	}
 	
 
-	var b = getRandomInt(0, 10);
-	var t = getRandomInt(0, 10);
+	var b = getRandomInt(0, 8);
+	var t = getRandomInt(0, 8);
 	if(b == t){
 		b+=1
 	}
@@ -88,6 +84,25 @@
 		bodyadd2.style['display'] = 'block'
 		document.getElementById('dummy_round_word').innerHTML = testword;
 	}
+
+	function wordvaluefinder(array, value) {
+    return array.filter((v) => (v === value)).length;
+	}
+	var wordvalue = wordvaluefinder(longlistowords, testword);
+
+	window.begintest = function(){
+		longlistowords.sort(function(a, b){return 0.5 - Math.random()});
+	}
+
+	var n = 0;
+	do{
+		if(longlistowords[n]==longlistowords[n+1]){
+			longlistowords.splice(n,1);
+			wordvalue-=1;
+		}
+		n+=1;
+	}
+	while (n<longlistowords.length);
 
 </script>
 
