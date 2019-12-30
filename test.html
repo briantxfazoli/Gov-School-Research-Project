@@ -15,6 +15,8 @@
 
 </style>
 
+<body>
+
 <heading>
 	
 	<div id='body1'>
@@ -44,9 +46,13 @@
 		<button id='begintest_button' class='button' onclick='listrandomizer();begintestFunction()'>Begin Test</button>
 	</div>
 
-	<div id='words' style='display: none';>SAMPLETEXT</div>
+	<div id='words' style='display: none';>
+		<h1>SAMPLETEXT</h1>
+	</div>
 
 </heading>
+
+</body>
 
 <script>
 
@@ -109,20 +115,29 @@
 		while (n<longlistowords.length);
 	}
 
-	var words = document.getElementById('words');
+	const words = document.getElementById("words").text;
+	
 	window.begintestFunction = function(){
+		setInterval(begintestScript, 50);
+	}
+	function begintestScript(){
 		var n = 0;
 		do{
-			if(n == 0){
-
-			}
+			if (n==0) {
+				var wordReplace = document.getElementById('words').innerHTML;
+				var rep = words.replace('SAMPLETEXT','longlistowords[0]');
+				words.style['display']='block';
+				document.getElementById('words').innerHTML = rep;
+			} else {
+				var wordReplace = document.getElementById('words').innerHTML;
+				var rep = words.replace('longlistowords[n-1]','longlistowords[n]');
+				document.getElementById('words').innerHTML = rep;
+			} 
+			n+=1
 		}
-		while (n<)
+		while (n<longlistowords.length);
 	}
-	
-	
-
-	console.log(longlistowords);
+	console.log(words);
 </script>
 
 </html>
