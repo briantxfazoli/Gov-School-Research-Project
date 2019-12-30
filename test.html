@@ -2,6 +2,8 @@
 
 <html>
 
+<title>Focus Research Project</title>
+
 <style>
 	
 	body {text-align: center}
@@ -39,7 +41,10 @@
 		<h4>(This is just an example of what the tests will look like.)</h4>
 		<h1>Your word:</h1>
 		<h1 id='dummy_round_word' style='font-size: 60px';></h1>
-		<button class='button' onclick='begintest()'>Begin Test</button></div>
+		<button id='begintest_button' class='button' onclick='listrandomizer();begintestFunction()'>Begin Test</button>
+	</div>
+
+	<div id='words' style='display: none';>SAMPLETEXT</div>
 
 </heading>
 
@@ -86,24 +91,38 @@
 	}
 
 	function wordvaluefinder(array, value) {
-    return array.filter((v) => (v === value)).length;
+    	return array.filter((v) => (v === value)).length;
 	}
 	var wordvalue = wordvaluefinder(longlistowords, testword);
 
-	window.begintest = function(){
-		longlistowords.sort(function(a, b){return 0.5 - Math.random()});
-	}
-
-	var n = 0;
-	do{
-		if(longlistowords[n]==longlistowords[n+1]){
-			longlistowords.splice(n,1);
-			wordvalue-=1;
+	var begintest_button = document.getElementById('begintest_button');
+	window.listrandomizer = function(){
+		longlistowords.sort(() => Math.random() - 0.5);
+		var n = 0;
+		do{
+			if(longlistowords[n]==longlistowords[n+1]){
+				longlistowords.splice(n,1);
+				wordvalue-=1;
+			}
+			n+=1;
 		}
-		n+=1;
+		while (n<longlistowords.length);
 	}
-	while (n<longlistowords.length);
 
+	var words = document.getElementById('words');
+	window.begintestFunction = function(){
+		var n = 0;
+		do{
+			if(n == 0){
+
+			}
+		}
+		while (n<)
+	}
+	
+	
+
+	console.log(longlistowords);
 </script>
 
 </html>
