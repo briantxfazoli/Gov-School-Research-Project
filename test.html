@@ -36,14 +36,14 @@
 		After it is finished, type the amount of times you saw the word into the text box that will appear. Then, click the "Proceed" button. Good luck!<br>
 		<br>
 		If you happen to notice any bugs, please email me at brian.tafazoli@nhrec.org.</p>
-		<button class='button' onclick='proceed2()'><b>Proceed</b></button>
+		<button class='button' onclick='proceed2();listrandomizer()'><b>Proceed</b></button>
 	</div>
 
 	<div id='dummy_round_ins' style='display: none';>
 		<h4>(This is just an example of what the tests will look like.)</h4>
 		<h1>Your word:</h1>
 		<h1 id='dummy_round_word' style='font-size: 60px';></h1>
-		<button id='begintest_button' class='button' onclick='listrandomizer();begintestFunction()'>Begin Test</button>
+		<button id='begintest_button' class='button' onclick='begintestFunction()'>Begin Test</button>
 	</div>
 
 	<div id='words' style='display: none';>
@@ -62,15 +62,15 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	var bcolor = ['White', 'Black', 'Gray', 'Aqua', 'Blue', 'Lime', 'Green', 'Purple', 'Red'];
+	var bcolor = ['White', 'Black', 'Gray', 'Aqua', 'Blue', 'Lime', 'Red'];
 
 	function ugly() {
 		alert("The backround color & text color are chosen by random variables, which has to do with the way the test works. Reloading the page will change the color scheme, but during the test, you might get the same one you have right now. No matter how absurd the combination is, it deserves to be tested on.")
 	}
 	
 
-	var b = getRandomInt(0, 8);
-	var t = getRandomInt(0, 8);
+	var b = getRandomInt(0, 6);
+	var t = getRandomInt(0, 6);
 	if(b == t){
 		b+=1
 	}
@@ -115,29 +115,31 @@
 		while (n<longlistowords.length);
 	}
 
-	const words = document.getElementById("words").text;
-	
-	window.begintestFunction = function(){
-		setInterval(begintestScript, 50);
-	}
-	function begintestScript(){
-		var n = 0;
-		do{
-			if (n==0) {
-				var wordReplace = document.getElementById('words').innerHTML;
-				var rep = words.replace('SAMPLETEXT','longlistowords[0]');
-				words.style['display']='block';
-				document.getElementById('words').innerHTML = rep;
-			} else {
-				var wordReplace = document.getElementById('words').innerHTML;
-				var rep = words.replace('longlistowords[n-1]','longlistowords[n]');
-				document.getElementById('words').innerHTML = rep;
-			} 
-			n+=1
-		}
-		while (n<longlistowords.length);
-	}
+const words = document.getElementById('words').innerHTML;
+const wordsDIV = document.getElementById('words');
+
+window.begintestFunction = function() {
+  setInterval(begintestScript, 93);
+}
+
+var n = 0;
+function begintestScript() {
+    if (n == 0) {
+      var rep = words.replace('SAMPLETEXT', longlistowords[0]);
+      wordsDIV.style['display'] = 'block';
+      document.getElementById('words').innerHTML = rep;
+      n+=1;
+    } else {
+      const words = document.getElementById('words').innerHTML
+      var rep = words.replace(longlistowords[n-1], longlistowords[n]);
+      document.getElementById('words').innerHTML = rep;
+      n+=1;
+    }
+  }
+  	console.log(n);
 	console.log(words);
+	console.log(longlistowords);
+
 </script>
 
 </html>
