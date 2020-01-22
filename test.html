@@ -18,86 +18,36 @@
 			width: 1%;
 		}
 
-		a:link {
-  		color: gray;
-  		background-color: transparent;
-  		text-decoration: underline;
-  	}
-
-		a:visited {
-  		color: gray;
-  		background-color: transparent;
-  		text-decoration: underline;
-  	}
-
 	</style>
 
 	<body>
-		
-		<div id='body1'>
-			<h1 style='font-size: 80px';>Welcome To The Focus Test!</h1>
-			<h2>This test is part of a research project being conducted by a 
-			<br>
-			student of The Governor's School for Science and Technology.</h2>
-			<button class='button' onclick='proceed()'><b>Proceed</b></button>
-			<br>
-			<br>
-			<button onclick='ugly()'>Why is this color scheme so ugly?</button>
-			<br>
-			<br>
-			<h2>
-				<a href='https://www.google.com' target='_blank'>Record your results here</a>
-			</h2>
-		</div>
 
-		<div id='body2' style='display: none';>
-			<h1 style='font-size: 50px';>Instructions</h1>
-			<p style='font-size: 18px'>A fake word will appear at the top of your screen, & your job will be to keep track of how many times it appears in the following series of fake words.<br>
-			After it is finished, type the amount of times you saw the word into the the 
-			<a href='https://www.google.com' target='_blank'>Google form</a>
-			provided. Then, click the "Proceed" button. Good luck!<br>
-			<br>
-			If you happen to notice any bugs, please email me at brian.tafazoli@nhrec.org.</p>
-			<button class='button' onclick='proceed2();listrandomizer()'><b>Proceed</b></button>
-		</div>
-
-		<div id='testRounds' style='display: none';>
+		<div id = 'testRounds';>
 			<h1>Your word:</h1>
-			<h1 id='userWord' style='font-size: 60px';></h1>
-			<button id='begintest_button' class='button' onclick='beginTestFunction()'>Begin</button>
-			<h1 id='testDisclaimer'>This is just a test round, do not record your results.</h1>
+			<h1 id = 'userWord' style = 'font-size: 60px';></h1>
+			<button id = 'begintest_button' class = 'button' onclick = 'beginTestFunction()'>Begin</button>
 		</div>
 
-		<div id='words' style='display: none';>
-			<h1 style='font-size: 45px'>SAMPLETEXT</h1>
+		<div id = 'controlGroupOption'>
+			<br>
+			<button id = 'controlGroupOption_button' onclick = 'controlGroupFunction()'>Control Group</button>
 		</div>
 
-		<div id='proceedTestDummy' style='display: none';>
-			<h1>THIS IS A TEST ROUND, DO NOT RECORD YOUR RESULTS</h1>
+		<div id = 'words' style = 'display: none';>
+			<h1 style = 'font-size: 45px'>SAMPLETEXT</h1>
+		</div>
+
+		<div id = 'proceedTestDummy' style = 'display: none';>
 			<h3>Background Color:</h3>
-			<h3 id='backgroundColorResults'>SAMPLETEXT</h3>
+			<h3 id = 'backgroundColorResults'>SAMPLETEXT</h3>
 			<h3>Text Color:</h3>
-			<h3 id='textColorResults'>SAMPLETEXT</h3>
+			<h3 id = 'textColorResults'>SAMPLETEXT</h3>
 			<h3>Actual word value:</h3>
-			<h3 id='wordValueResults'>SAMPLETEXT</h3>
-			<button id='proceedTest_button' class='button' onclick='nextTest()'>Proceed</button>
+			<button id = 'proceedTest_button' class = 'button' onclick = 'wordValueDisplayFunction()'>Show word value</button>
 		</div>
 
-		<div id='proceedTest' style='display: none';>
-			<h1>RECORD THESE RESULTS IN THE GOOGLE FORM</h1>
-			<h3>Background Color:</h3>
-			<h3 id='backgroundColorResults'>SAMPLETEXT</h3>
-			<h3>Text Color:</h3>
-			<h3 id='textColorResults'>SAMPLETEXT</h3>
-			<h3>Actual word value:</h3>
-			<h3 id='wordValueResults'>SAMPLETEXT</h3>
-			<button id='proceedTest_button' class='button' onclick='nextTest()'>Proceed</button>
-		</div>
-		
-		<div id='actualRounds' style='display: none';>
-			<h1>Your word:</h1>
-			<h1 id='userWord2' style='font-size: 60px';></h1>
-			<button id='begintest_button' class='button' onclick='beginTestFunction()'>Begin</button>
+		<div id = 'wordValueDisplay' style = 'display: none';>
+			<h3 id = 'wordValueResults'>SAMPLETEXT</h3>
 		</div>
 
 	</body>
@@ -111,10 +61,6 @@
 		}
 
 		var bcolor = ['White', 'Black', 'Aqua', 'Blue', 'Lime', 'Red'];
-
-		function ugly() {
-			alert("The backround color & text color are chosen by random variables, which has to do with the way the test works. Reloading the page will change the color scheme, but during the test, you might get the same one you have right now. No matter how absurd the combination is, it deserves to be tested on.");
-		}
 		
 		var b = getRandomInt(0, 5);
 		var t = getRandomInt(0, 5);
@@ -124,12 +70,14 @@
 		document.body.style['background-color'] = bcolor[b];
 		document.body.style['color'] = bcolor[t];
 		
+		window.controlGroupFunction = function(){
+			document.body.style['background-color'] = bcolor[0];
+			document.body.style['color'] = bcolor[1];
+			document.getElementById('controlGroupOption').style['display'] = 'none';
+		}
+
 		var bodyremove1 = document.getElementById('body1');
 		var bodyadd1 = document.getElementById('body2');
-		window.proceed = function(){
-			bodyremove1.style['display'] = 'none';
-			bodyadd1.style['display'] = 'block';
-		}
 
 		var longlistowords = ['volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'tempor', 'blandit', 'congue', 'volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'tempor', 'blandit', 'congue', 'volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'tempor', 'blandit', 'congue', 'volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'labore', 'tempor', 'blandit', 'congue', 'volutpat' , 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'blandit', 'egestas', 'quisque', 'turpis', 'dictum' , 'blandit',  'egestas', 'turpis', 'dictum', 'volutpat', 'ultricies', 'viverra', 'egestas', 'quisque', 'turpis', 'dictum', 'labore', 'tempor', 'blandit', 'congue'];
 
@@ -137,14 +85,11 @@
 
 		var bodyremove2 = document.getElementById('body2');
 		var bodyadd2 = document.getElementById('testRounds');
-		window.proceed2 = function(){
-			bodyremove2.style['display'] = 'none';
-			bodyadd2.style['display'] = 'block';
-			document.getElementById('userWord').innerHTML = testword;
-		}
+		document.getElementById('userWord').innerHTML = testword;
 
 		var begintest_button = document.getElementById('begintest_button');
-		window.listrandomizer = function(){
+		
+		function listrandomizer(){
 			longlistowords.sort(() => Math.random() - 0.5);
 			var n = 0;
 			do{
@@ -157,6 +102,8 @@
 			}
 			while (n<longlistowords.length);
 		}
+		listrandomizer();
+
 
 		function wordValuefinder(array, value) {
     		return array.filter((v) => (v === value)).length;
@@ -164,17 +111,6 @@
 		var wordValue = wordValuefinder(longlistowords, testword);
 
 		var begintest_button = document.getElementById('begintest_button');
-		window.listrandomizer = function(){
-			longlistowords.sort(() => Math.random() - 0.5);
-			var n = 0;
-			do{
-				if(longlistowords[n]==longlistowords[n+1]){
-					longlistowords.splice(n,1);
-				}
-				n+=1;
-			}
-			while (n<longlistowords.length);
-		}
 
 		const words = document.getElementById('words').innerHTML;
 		const wordsDIV = document.getElementById('words');
@@ -194,17 +130,13 @@
 		document.getElementById('wordValueResults').innerHTML = repWordValue;
 		var proceedTest = document.getElementById('proceedTest');
 
-		var e = 0;
+		var begintest_buttonActual = document.getElementById('begintest_buttonActual');
+
 		window.beginTestFunction = function() {
 			begintest_button.style['display'] = 'none';
-			testDisclaimer.style['display'] = 'none';
-			if (e == 0){
-				setInterval(begintestScriptDummy, 95);
-			}
-			else{
-				setInterval(begintestScript, 95);
-			}
-			
+			n = 0;
+			document.getElementById('controlGroupOption').style['display'] = 'none';
+			setInterval(begintestScriptDummy, 95);	
 		}
 
 		var n = 0;
@@ -231,61 +163,13 @@
 		    }
 		}
 
-		var b = getRandomInt(0, 5);
-		var t = getRandomInt(0, 5);
-		if(b == t){
-			b+=1;
-		}
-		
-		var t = 0;
-		var actualRounds = document.getElementById('actualRounds');
-		window.nextTest = function(){
-			if (t == 0){
-				testRounds.style['display'] = 'none';
-				var testword = longlistowords[(getRandomInt(0,longlistowords.length-1))];
-				document.getElementById('userWord2').innerHTML = testword;
-				document.body.style['background-color'] = bcolor[b];
-				document.body.style['color'] = bcolor[t];
-				proceedTestDummy.style['display'] = 'none';
-				actualRounds.style['display'] = 'block';
-				t+=1;
-			}
-			else if (t < 5){
-				document.body.style['background-color'] = bcolor[b];
-				document.body.style['color'] = bcolor[t];
-				proceedTest.style['display'] = 'none';
-				t+=1;
-				actualRounds.style['display'] = 'block';
-			}
-			else{
-				proceedTest.style['display'] = 'none';
-				thankYou.style['display'] = 'block'
-			}
+		window.wordValueDisplayFunction = function(){
+			document.getElementById('proceedTest_button').style['display'] = 'none';
+			document.getElementById('wordValueDisplay').style['display'] = 'block';
 		}
 
-		var n = 0;
-		function begintestScript() {
-		    if (n == 0) {
-		     	var repWords = words.replace('SAMPLETEXT', longlistowords[0]);
-		     	wordsDIV.style['display'] = 'block';
-		     	document.getElementById('words').innerHTML = repWords;
-		     	n+=1;
-		    } else if (n < (longlistowords.length)) {
-		     	const words = document.getElementById('words').innerHTML
-		     	var repWords = words.replace(longlistowords[n-1], longlistowords[n]);
-		     	document.getElementById('words').innerHTML = repWords;
-		    	n+=1;
-		    } else if (n == longlistowords.length) {
-		    	wordsDIV.style['display'] = 'none';
-		    	proceedTest.style['display'] = 'block';
-		    	n+=1;
-		    } else {
-		     	const words = document.getElementById('words').innerHTML
-		     	var repWords = words.replace(longlistowords[n-1], 'SAMPLETEXT');
-		     	document.getElementById('words').innerHTML = repWords;		    	
-		    	return false;
-		    }
-		}
+
+	
 
 	</script>
 
